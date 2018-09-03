@@ -99,12 +99,10 @@ class CurrencyGenerator
 
                     break;
                 }
-
             }
 
             $this->getDoctrineManager->flush($storedCurrency);
             $updatedCurencies[] = $storedCurrency;
-
         }
         return $updatedCurencies;
 
@@ -124,7 +122,6 @@ class CurrencyGenerator
         }
 
         return $money;
-
     }
 
 }

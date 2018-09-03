@@ -27,8 +27,8 @@ class CurenciesController extends AbstractController
 
         $jsonContent =  $serializer->serialize($currecies, 'json');
 
-        return new Response(dump(json_decode($jsonContent)));
-        //return new Response($jsonContent);
+        //return new Response(dump(json_decode($jsonContent)));
+        return new Response($jsonContent);
 
     }
 }

@@ -22,9 +22,9 @@ class CreateUserCommand extends \Symfony\Component\Console\Command\Command
     protected function configure(){
         //Configure the command
         $this
-            ->setName('app:currencies')   //the name of command
+            ->setName('app:currencies')   // the name of command
             ->setDescription('Exchange rate')   //Description of command
-            ->setHelp('This command allows you to list you a list of exchange rate')   //"--help" option of the command
+            ->setHelp('This command allows you to list you a list of exchange rate')   // "--help" option of the command
         ;
 
     }
@@ -38,10 +38,8 @@ class CreateUserCommand extends \Symfony\Component\Console\Command\Command
         $xml=simplexml_load_file("http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml");
 
         $dateExchenge = new \DateTime($xml->Cube->Cube["time"]);
-        //$dateExchenge = $xml->Cube->Cube["time"];
         $output->writeln([
             '',
-            //'====================================================',
             'Euro foreign exchange reference rates: ' . $dateExchenge->format('d M Y'),
             '====================================================',
             '',
@@ -56,8 +54,6 @@ class CreateUserCommand extends \Symfony\Component\Console\Command\Command
 
         $curecies = $this->currencyGenerator->getExchangeRate();
         foreach($curecies as $currency){
-            //var_dump($currency);
-
             $output->writeln($currency->getCurrency() . ' <====> '
                 . number_format($currency->getRate(), 3,'.',' ') . ' => '
                 . $currency->getGrowth() . '  '
